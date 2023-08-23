@@ -16,3 +16,17 @@ patches:
     - op: replace
       path: /metadata/name
       value: project-memes-dev
+
+- target:
+    kind: RoleBinding
+    name: memes-editors
+  patch: |-
+    - op: replace
+      path: /metadata/namespace
+      value: project-memes-dev
+    - op: replace
+      path: /subjects/name
+      value: user2
+    - op: replace
+      path: /subjects/namespace
+      value: project-memes-dev
