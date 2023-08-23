@@ -28,3 +28,16 @@ patches:
     - op: replace
       path: /spec/hard/memory
       value: 1Gi
+- target:
+    kind: RoleBinding
+    name: memes-editors
+  patch: |-
+    - op: replace
+      path: /metadata/namespace
+      value: project-memes-prod
+    - op: replace
+      path: /subjects/name
+      value: user3
+    - op: replace
+      path: /subjects/namespace
+      value: project-memes-prod
