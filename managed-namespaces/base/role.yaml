@@ -3,6 +3,9 @@ kind: RoleBinding
 metadata:
   name: memes-editors
   namespace: for-replacement
+  annotations:
+    # Ensures that this resource will be applied after the namespace
+    argocd.argoproj.io/sync-wave: "0"
 roleRef:
   # The role being bound. In this case we're re-using the existing
   # edit role that's defined at cluster scope
