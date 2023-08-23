@@ -39,5 +39,5 @@ patches:
       path: /subjects/name
       value: user3
     - op: replace
-      path: /subjects/namespace
+      path: /subjects/kind/namespace
       value: project-memes-prod
