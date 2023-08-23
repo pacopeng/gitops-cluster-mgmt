@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: console-customisations/
-    repoURL: 'https://github.com/REPLACE_THIS/rht-summit-2023-gitops-cluster-mgmt'
+    repoURL: 'http://192.168.88.1:7010/root/summit-2023-gitops-cluster-mgmthello.git'
     targetRevision: HEAD
     directory:
       recurse: true
