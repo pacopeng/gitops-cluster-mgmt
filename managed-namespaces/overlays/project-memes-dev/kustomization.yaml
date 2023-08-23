@@ -24,10 +24,10 @@ patches:
     - op: replace
       path: /subjects/0/name
       value: user2
+    - op: replace
+      path: /subjects/0/namespace
+      value: project-memes-dev
 #    - op: replace
 #      path: /metadata/namespace
 #      value: project-memes-dev
 
-#    - op: replace
-#      path: /subjects/kind/namespace
-#      value: project-memes-dev

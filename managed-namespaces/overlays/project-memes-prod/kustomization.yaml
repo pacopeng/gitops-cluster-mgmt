@@ -35,10 +35,10 @@ patches:
     - op: replace
       path: /subjects/0/name
       value: user3
+    - op: replace
+      path: /subjects/0/namespace
+      value: project-memes-prod
 #    - op: replace
 #     path: /metadata/namespace
 #      value: project-memes-prod
 
-#    - op: replace
-#      path: /subjects/kind/namespace
-#      value: project-memes-prod
