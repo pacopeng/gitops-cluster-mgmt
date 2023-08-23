@@ -22,7 +22,7 @@ patches:
     name: memes-editors
   patch: |-
     - op: replace
-      path: /subjects/kind/name
+      path: /subjects/0/name
       value: user2
 #    - op: replace
 #      path: /metadata/namespace
