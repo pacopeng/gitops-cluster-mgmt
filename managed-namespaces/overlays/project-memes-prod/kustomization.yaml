@@ -33,11 +33,12 @@ patches:
     name: memes-editors
   patch: |-
     - op: replace
-      path: /metadata/namespace
-      value: project-memes-prod
-    - op: replace
       path: /subjects/name
       value: user3
-    - op: replace
-      path: /subjects/kind/namespace
-      value: project-memes-prod
+#    - op: replace
+#     path: /metadata/namespace
+#      value: project-memes-prod
+
+#    - op: replace
+#      path: /subjects/kind/namespace
+#      value: project-memes-prod
