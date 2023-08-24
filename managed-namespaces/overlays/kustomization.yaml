@@ -1,3 +1,3 @@
 bases:
-- ./project-memes-dev
-- ./project-memes-prod
+- ./go-hello-dev
+- ./go-hello-prod

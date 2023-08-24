@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: memes-editors
+  name: gohello-editors
   namespace: for-replacement
   annotations:
     # Ensures that this resource will be applied after the namespace

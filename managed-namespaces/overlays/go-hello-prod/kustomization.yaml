@@ -1,21 +1,21 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: project-memes-prod
+namespace: go-hello-prod
 bases:
 - ../../base
 
 # Patches are edits to make to a set of one or more targets
 patches:
 # This patch targets the Namespace resource and changes the
-# value of metadata.name to "project-memes-prod"
+# value of metadata.name to "go-hello-prod"
 - target:
     kind: Namespace
     name: for-replacement
   patch: |-
     - op: replace
       path: /metadata/name
-      value: project-memes-prod
+      value: go-hello-prod
 # This patch targets the resource quota. It doubles the available
 # resources compared to the default values
 - target:
@@ -30,15 +30,15 @@ patches:
       value: 1Gi
 - target:
     kind: RoleBinding
-    name: memes-editors
+    name: gohello-editors
   patch: |-
     - op: replace
       path: /subjects/0/name
       value: user3
     - op: replace
       path: /subjects/0/namespace
-      value: project-memes-prod
+      value: go-hello-prod
 #    - op: replace
 #     path: /metadata/namespace
-#      value: project-memes-prod
+#      value: go-hello-prod
 
