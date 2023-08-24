@@ -4,4 +4,4 @@ kind: Group
 metadata:
   name: application-dev
 users:
-  - foo
+  - user2

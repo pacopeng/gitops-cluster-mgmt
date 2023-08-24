@@ -4,4 +4,4 @@ kind: Group
 metadata:
   name: application-ops
 users:
-  - bar
+  - user3
