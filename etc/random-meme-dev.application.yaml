@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: random-meme-dev
+spec:
+  destination:
+    name: ''
+    namespace: 'projects-memes-dev'
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: k8s/overlays/development
+    repoURL: 'http://192.168.88.1:7010/root/summit-2023-gitops-lab-sample-application.git'
+    targetRevision: HEAD
+  project: project-memes
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -2,24 +2,24 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   # The name of this Argo CD project
-  name: project-memes
+  name: project-gohello
   # The namespace in which to apply this resource. This should be where
   # the Argo CD instance is deployed, i.e the "openshift-gitops" namespace
   namespace: openshift-gitops
 spec:
   # Allow the creation of certain cluster scoped resources if desired. This
   # is not enabled in this example, since this AppProject is only concerned
-  # with managing resources in the "project-memes-*" namespaces!
+  # with managing resources in the "project-gohello-*" namespaces!
   # clusterResourceWhitelist:
   #   - group: '*'
   #     kind: '*'
-  description: Project Memes
+  description: Project Go Hello Helm
   destinations:
     - name: in-cluster
-      namespace: project-memes-dev
+      namespace: go-hello-dev
       server: 'https://kubernetes.default.svc'
     - name: in-cluster
-      namespace: project-memes-prod
+      namespace: go-hello-prod
       server: 'https://kubernetes.default.svc'
   roles:
     - description: Allows developers to work in the development environment only
@@ -27,71 +27,71 @@ spec:
         # This refers to a Group defined by the user.openshift.io/v1 API
         # https://docs.openshift.com/container-platform/4.12/rest_api/user_and_group_apis/user-and-group-apis-index.html
         - application-dev
-      name: memes-development
+      name: gohello-development
       # Policies defied using Argo CD RBAC policies:
       # https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/
       policies:
         # Rules for the development environment/application
         - >-
-          p, proj:project-memes:memes-development, applications, get,
-          project-memes/random-meme-dev, allow
+          p, proj:project-gohello:gohello-development, applications, get,
+          project-gohello/go-hello-helm-app-dev, allow
         - >-
-          p, proj:project-memes:memes-development, applications, create,
-          project-memes/random-meme-dev, allow
+          p, proj:project-gohello:gohello-development, applications, create,
+          project-gohello/go-hello-helm-app-dev, allow
         - >-
-          p, proj:project-memes:memes-development, applications, update,
-          project-memes/random-meme-dev, allow
+          p, proj:project-gohello:gohello-development, applications, update,
+          project-gohello/go-hello-helm-app-dev, allow
         - >-
-          p, proj:project-memes:memes-development, applications, delete,
-          project-memes/random-meme-dev, allow
+          p, proj:project-gohello:gohello-development, applications, delete,
+          project-gohello/go-hello-helm-app-dev, allow
         - >-
-          p, proj:project-memes:memes-development, applications, sync,
-          project-memes/random-meme-dev, allow
+          p, proj:project-gohello:gohello-development, applications, sync,
+          project-gohello/go-hello-helm-app-dev, allow
         - >-
-          p, proj:project-memes:memes-development, applications, override,
-          project-memes/random-meme-dev, allow
+          p, proj:project-gohello:gohello-development, applications, override,
+          project-gohello/go-hello-helm-app-dev, allow
         # Rules for the production environment/application
         - >-
-          p, proj:project-memes:memes-development, applications, get,
-          project-memes/random-meme-dev, allow
+          p, proj:project-gohello:gohello-development, applications, get,
+          project-gohello/go-hello-helm-app-dev, allow
         - >-
-          p, proj:project-memes:memes-development, applications, create,
-          project-memes/random-meme-prod, deny
+          p, proj:project-gohello:gohello-development, applications, create,
+          project-gohello/go-hello-helm-app-prod, deny
         - >-
-          p, proj:project-memes:memes-development, applications, update,
-          project-memes/random-meme-prod, deny
+          p, proj:project-gohello:gohello-development, applications, update,
+          project-gohello/go-hello-helm-app-prod, deny
         - >-
-          p, proj:project-memes:memes-development, applications, delete,
-          project-memes/random-meme-prod, deny
+          p, proj:project-gohello:gohello-development, applications, delete,
+          project-gohello/go-hello-helm-app-prod, deny
         - >-
-          p, proj:project-memes:memes-development, applications, sync,
-          project-memes/random-meme-prod, deny
+          p, proj:project-gohello:gohello-development, applications, sync,
+          project-gohello/go-hello-helm-app-prod, deny
         - >-
-          p, proj:project-memes:memes-development, applications, override,
-          project-memes/random-meme-prod, deny
+          p, proj:project-gohello:gohello-development, applications, override,
+          project-gohello/go-hello-helm-app-prod, deny
     - description: Provides the operations group with access to both development and production
       groups:
         - application-ops
-      name: memes-operations
+      name: gohello-operations
       policies:
         - >-
-          p, proj:project-memes:memes-operations, applications, get,
-          project-memes/*, allow
+          p, proj:project-gohello:gohello-operations, applications, get,
+          project-gohello/*, allow
         - >-
-          p, proj:project-memes:memes-operations, applications, create,
-          project-memes/*, allow
+          p, proj:project-gohello:gohello-operations, applications, create,
+          project-gohello/*, allow
         - >-
-          p, proj:project-memes:memes-operations, applications, update,
-          project-memes/*, allow
+          p, proj:project-gohello:gohello-operations, applications, update,
+          project-gohello/*, allow
         - >-
-          p, proj:project-memes:memes-operations, applications, delete,
-          project-memes/*, allow
+          p, proj:project-gohello:gohello-operations, applications, delete,
+          project-gohello/*, allow
         - >-
-          p, proj:project-memes:memes-operations, applications, sync,
-          project-memes/*, allow
+          p, proj:project-gohello:gohello-operations, applications, sync,
+          project-gohello/*, allow
         - >-
-          p, proj:project-memes:memes-operations, applications, override,
-          project-memes/*, allow
+          p, proj:project-gohello:gohello-operations, applications, override,
+          project-gohello/*, allow
   sourceRepos:
     # Allowed repositories. It's set to a wildcard for this lab, but should
     # be restricted to specific repos in a real-world scenario.
