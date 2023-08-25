@@ -36,6 +36,7 @@ patches:
     kind: ServiceAccount
     name: default
   patch: |-
-    - op: replace
-      path: /imagePullSecrets/
-      value: quay
+    - op: add
+      path: /imagePullSecrets/-
+      value: 
+         name: quay
