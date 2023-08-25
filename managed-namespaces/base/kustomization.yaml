@@ -4,3 +4,6 @@ resources:
 - namespace.yaml
 - resource-quota.yaml
 - role.yaml
+- git-secret.yaml
+- registry-secret.yaml
+- secret-link.yaml
