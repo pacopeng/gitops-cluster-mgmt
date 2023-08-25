@@ -31,3 +31,11 @@ patches:
 #      path: /metadata/namespace
 #      value: go-hello-dev
 
+
+- target:
+    kind: ServiceAccount
+    name: default
+  patch: |-
+    - op: add
+      path: /imagePullSecrets/-
+      value: quay
