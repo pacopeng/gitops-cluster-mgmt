@@ -39,4 +39,4 @@ patches:
     - op: add
       path: /imagePullSecrets
       value: 
-         name: quay
+         - name: quay
