@@ -6,4 +6,4 @@ resources:
 - role.yaml
 - git-secret.yaml
 - registry-secret.yaml
-- secret-link.yaml
+#- secret-link.yaml
