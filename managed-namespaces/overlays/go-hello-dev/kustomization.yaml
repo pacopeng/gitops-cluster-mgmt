@@ -37,6 +37,6 @@ patches:
     name: default
   patch: |-
     - op: add
-      path: /imagePullSecrets/-
+      path: /imagePullSecrets
       value: 
          name: quay
