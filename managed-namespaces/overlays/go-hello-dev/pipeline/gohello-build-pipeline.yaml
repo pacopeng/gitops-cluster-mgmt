@@ -66,6 +66,28 @@ spec:
       workspaces:
         - name: source
           workspace: workspace
+    - name: scan-image
+      params:
+        - name: image
+          value: '$(params.IMAGE_NAME):$(params.APP_IMAGE_TAG)'
+        - name: insecure-skip-tls-verify
+          value: 'true'
+      runAfter:
+        - build
+      taskRef:
+        kind: Task
+        name: rhacs-image-scan
+    - name: check-image
+      params:
+        - name: image
+          value: '$(params.IMAGE_NAME):$(params.APP_IMAGE_TAG)'
+        - name: insecure-skip-tls-verify
+          value: 'true'
+      runAfter:
+        - scan-image
+      taskRef:
+        kind: Task
+        name: rhacs-image-check
     - name: git-update-deployment
       params:
         - name: GIT_REPOSITORY
@@ -79,7 +101,7 @@ spec:
         - name: KUSTOMIZATION_PATH
           value: $(params.KUSTOMIZATION_PATH)
       runAfter:
-        - build
+        - check-image
       taskRef:
         kind: Task
         name: git-update-deployment

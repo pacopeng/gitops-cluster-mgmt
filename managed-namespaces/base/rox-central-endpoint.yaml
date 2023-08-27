@@ -1,0 +1,8 @@
+kind: Secret
+apiVersion: v1
+metadata:
+  name: rox-central-endpoint
+  namespace: for-replacement
+data:
+  rox_central_endpoint: Y2VudHJhbC5zdGFja3JveC5zdmM6NDQz
+type: Opaque
