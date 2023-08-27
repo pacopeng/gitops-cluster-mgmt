@@ -6,4 +6,6 @@ resources:
 - role.yaml
 - git-secret.yaml
 - registry-secret.yaml
+- cpu-limit-range.yaml
+- mem-limit-range.yaml
 #- secret-link.yaml
