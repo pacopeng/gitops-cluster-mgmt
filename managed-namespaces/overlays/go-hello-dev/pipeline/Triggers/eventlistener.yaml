@@ -21,9 +21,9 @@ spec:
             - name: overlays
               value:
                 - expression: body.after.truncate(7)
-                  key: short_sha
+                  key: extensions.truncated_sha
                 - expression: 'body.ref.split(''/'')[2]'
-                  key: branch_name
+                  key: extensions.branchname
             - name: secretRef
               value:
                 secretName: "gitlab-secret"

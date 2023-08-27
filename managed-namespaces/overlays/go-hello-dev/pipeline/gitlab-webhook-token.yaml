@@ -2,7 +2,6 @@ kind: Secret
 apiVersion: v1
 metadata:
   name: gitlab-secret
-  namespace: for-replacement
 data:
   secretToken: MTIzNDU2Nw==
 type: Opaque
