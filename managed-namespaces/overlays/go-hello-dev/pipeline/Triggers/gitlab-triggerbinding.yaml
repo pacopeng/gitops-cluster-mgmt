@@ -10,9 +10,9 @@ spec:
   - name: gitrevision
     value: $(body.ref)
   - name: gitshortsha
-    value: $(body.truncated_sha)
+    value: $(body.extension.truncated_sha)
   - name: gitbranchname
-    value: $(body.branchname)
+    value: $(body.extension.branchname)
   - name: gitrepositoryurl
     value: $(body.repository.git_http_url)
   - name: contenttype
