@@ -6,7 +6,7 @@ bases:
 - ../../base
 
 resources:
-- ./pipeline/*
+- ./pipeline
 
 # Patches are edits to make to a set of one or more targets
 patches:
