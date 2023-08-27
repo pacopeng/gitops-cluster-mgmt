@@ -7,12 +7,12 @@ metadata:
       argocd.argoproj.io/sync-wave: "0"
 spec:
   params:
-  - name: revision
-    value: $(body.truncated_sha)
-  - name: sha
-    value: $(body.truncated_sha)
-  - name: ranchname
-    value: $(body.truncated_sha)
+  - name: gitrevision
+    value: $(body.ref)
+  - name: gitshortsha
+    value: $(body.ref)
+  - name: gitbranchname
+    value: $(body.ref)
   - name: gitrepositoryurl
     value: $(body.repository.git_http_url)
   - name: contenttype
