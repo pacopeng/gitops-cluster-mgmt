@@ -7,6 +7,8 @@ resources:
 - git-secret.yaml
 - registry-secret.yaml
 - cpu-limit-range.yaml
+- rox-api-token.yaml
+- rox-central-endpoint.yaml
 #- mem-limit-range.yaml
 #- ephemeral-storage-range.yaml
 #- secret-link.yaml
