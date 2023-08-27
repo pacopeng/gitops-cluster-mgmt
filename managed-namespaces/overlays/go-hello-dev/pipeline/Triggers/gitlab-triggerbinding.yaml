@@ -10,7 +10,7 @@ spec:
   - name: gitrevision
     value: $(body.after)
   - name: gitshortsha
-    value: $(body.after.truncate(7))
+    value: $(body.checkout_sha.truncate(7))
   - name: gitbranchname
     value: $(body.branch_name)
   - name: gitrepositoryurl
