@@ -6,7 +6,9 @@ bases:
 - ../../base
 
 resources:
-- ./pipeline
+- ./pipeline/Task/*.yaml
+- ./pipeline/Triggers/*.yaml
+- ./pipeline/*.yaml
 
 # Patches are edits to make to a set of one or more targets
 patches:
