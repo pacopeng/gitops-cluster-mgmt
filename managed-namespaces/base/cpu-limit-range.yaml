@@ -1,12 +1,16 @@
 apiVersion: v1
 kind: LimitRange
 metadata:
-  name: cpu-limit-range
+  name: limit-range
   namespace: for-replacement
 spec:
   limits:
   - default:
       cpu: 100m
+      memory: 512Mi
+      ephemeral-storage: 10Gi
     defaultRequest:
       cpu: 100m
+      memory: 256Mi
+      ephemeral-storage: 1Gi
     type: Container
