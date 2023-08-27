@@ -43,5 +43,10 @@ spec:
           value: $(tt.params.gitbranchname)-$(tt.params.gitshortsha)
       workspaces:
       - name: workspace
-        persistentVolumeClaim:
-          claimName: gohello-build-workspace
+        volumeClaimTemplate:
+          spec:
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 1Gi
