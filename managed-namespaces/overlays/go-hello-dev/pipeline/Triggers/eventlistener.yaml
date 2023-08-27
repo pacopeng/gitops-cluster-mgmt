@@ -9,7 +9,18 @@ spec:
   serviceAccountName: pipeline
   triggers:
     - name: gitlab-webhook
+      bindings:
+      - kind: TriggerBinding
+        ref: gitlab-triggerbinding
+      template:
+        ref: gohello-trigger-template
       interceptors:
+        - cel:
+             overlays:
+             - key: short_sha
+               expression: "body.after.truncate(7)"
+             - key: branch_name
+               expression: "body.ref.split('/')[2]"
         - name: "verify-gitlab-payload"
           ref: 
             name: "gitlab"
@@ -22,7 +33,3 @@ spec:
             - name: eventTypes
               value:
                 - "Push Hook"
-      bindings:
-        - ref: gitlab-triggerbinding
-      template:
-        ref: gohello-trigger-template
