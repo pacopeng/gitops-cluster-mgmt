@@ -8,11 +8,11 @@ metadata:
 spec:
   params:
   - name: revision
-    value: $(body.extensions.truncated_sha)
+    value: $(body.truncated_sha)
   - name: sha
-    value: $(body.extensions.truncated_sha)
+    value: $(body.truncated_sha)
   - name: ranchname
-    value: $(body.extensions.truncated_sha)
+    value: $(body.truncated_sha)
   - name: gitrepositoryurl
     value: $(body.repository.git_http_url)
   - name: contenttype
