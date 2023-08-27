@@ -1,0 +1,106 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: git-update-deployment
+spec:
+  description: This Task can be used to update image digest in a Git repo using kustomize
+  params:
+    - name: GIT_REPOSITORY
+      type: string
+    - name: CURRENT_IMAGE
+      type: string
+    - name: NEW_IMAGE
+      type: string
+    - name: NEW_DIGEST
+      type: string
+    - name: KUSTOMIZATION_PATH
+      type: string
+  results:
+    - description: The commit SHA
+      name: commit
+  steps:
+    - image: 'docker.io/alpine/git:v2.26.2'
+      name: git-clone
+      resources: {}
+      script: |
+        rm -rf git-update-digest-workdir
+        git clone $(params.GIT_REPOSITORY) git-update-digest-workdir        
+      workingDir: $(workspaces.workspace.path)
+    - image: 'quay.io/wpernath/kustomize-ubi:latest'
+      name: update-digest
+      resources: {}
+      script: >
+        #!/usr/bin/env bash
+
+        echo "Start"
+
+        pwd
+
+        cd git-update-digest-workdir
+        
+        
+        #sed -i  "s|^version:.*|version: \"$replace\"|" $(params.KUSTOMIZATION_PATH)
+        echo "sed -i  "s|^  tag:.*|  tag: \"$(params.NEW_DIGEST)\"|" $(params.KUSTOMIZATION_PATH)"
+        
+        sed -i  "s|^  tag:.*|  tag: \"$(params.NEW_DIGEST)\"|" $(params.KUSTOMIZATION_PATH)
+
+        echo "########UPDATED $(params.KUSTOMIZATION_PATH)##################"
+
+        cat $(params.KUSTOMIZATION_PATH) 
+
+        echo "##########################"
+
+
+       
+      workingDir: $(workspaces.workspace.path)
+    - image: 'docker.io/alpine/git:v2.26.2'
+      name: git-commit
+      resources: {}
+      script: |
+        pwd
+
+        cd git-update-digest-workdir
+
+
+        git config user.email "tekton-pipelines-ci@redhat.com"
+
+
+        git config user.name "tekton-pipelines-ci"
+
+
+        git status
+
+
+        #git add $(params.KUSTOMIZATION_PATH)/kustomization.yaml
+        git add $(params.KUSTOMIZATION_PATH)
+
+        git commit -m "[$(context.pipelineRun.name)] Image digest updated"
+
+        git status
+
+        #git commit -m "[ci] Image digest updated"
+
+        #git status
+        git push
+
+
+        RESULT_SHA="$(git rev-parse HEAD | tr -d '\n')"
+
+
+        EXIT_CODE="$?"
+
+
+        if [ "$EXIT_CODE" != 0 ]
+
+
+        then
+          exit $EXIT_CODE
+        fi
+
+        # Make sure we don't add a trailing newline to the result!
+
+        echo -n "$RESULT_SHA" > $(results.commit.path)        
+      workingDir: $(workspaces.workspace.path)
+  workspaces:
+    - description: The workspace consisting of maven project.
+      name: workspace

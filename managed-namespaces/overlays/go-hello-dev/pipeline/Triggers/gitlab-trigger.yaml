@@ -1,0 +1,20 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-petclinc-gitlab
+  annotations:
+      argocd.argoproj.io/sync-wave: "1"
+spec:
+  bindings:
+  - kind: TriggerBinding
+    ref: gitlab-triggerbinding
+  interceptors:
+  - gitlab:
+      eventTypes:
+      - Push Hook
+      secretRef:
+        secretKey: secretToken
+        secretName: gitlab-secret
+  serviceAccountName: pipeline
+  template:
+    name: gohello-trigger-template
