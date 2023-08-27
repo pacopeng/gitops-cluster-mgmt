@@ -38,7 +38,7 @@ spec:
         - name: GIT_REPO
           value: $(tt.params.gitrepositoryurl)
         - name: GIT_REVISION
-          value: $(tt.params.gitbranchname)
+          value: $(tt.params.gitrevision)
         - name: APP_IMAGE_TAG
           value: $(tt.params.gitbranchname)-$(tt.params.gitshortsha)
       workspaces:
