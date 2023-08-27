@@ -36,13 +36,28 @@ https://cloud.redhat.com/blog/helm-based-applications-on-red-hat-advanced-cluste
 
 
 
-oc secrets link --for=pull default quay -n go-hello-dev
-oc secrets link --for=pull builder quay -n go-hello-dev
-oc secrets link --for=pull pipeline quay -n go-hello-dev
-oc secrets link --for=pull go-hello-helm-app-dev-gohello quay -n go-hello-dev
+oc secrets link --for=pull,mount default quay -n go-hello-dev
+oc secrets link --for=pull,mount builder quay -n go-hello-dev
+oc secrets link --for=pull,mount pipeline quay -n go-hello-dev
+oc secrets link --for=pull,mount go-hello-helm-app-dev-gohello quay -n go-hello-dev
 
 
-oc secrets link --for=pull default quay -n go-hello-prod
-oc secrets link --for=pull builder quay -n go-hello-prod
-oc secrets link --for=pull pipeline quay -n go-hello-prod
-oc secrets link --for=pull go-hello-helm-app-prod-gohello quay -n go-hello-prod
+oc secrets link default gitlab -n go-hello-dev
+oc secrets link builder gitlab -n go-hello-dev
+oc secret  link pipeline gitlab -n go-hello-dev
+oc secrets link  go-hello-helm-app-dev-gohello gitlab -n go-hello-dev
+
+
+
+
+oc secrets link --for=pull,mount default quay -n go-hello-prod
+oc secrets link --for=pull,mount builder quay -n go-hello-prod
+oc secrets link --for=pull,mount pipeline quay -n go-hello-prod
+oc secrets link --for=pull,mount go-hello-helm-app-prod-gohello quay -n go-hello-prod
+
+
+
+oc secrets link default gitlab -n go-hello-prod
+oc secrets link builder gitlab -n go-hello-prod
+oc secrets link pipeline gitlab -n go-hello-prod
+oc secrets link go-hello-helm-app-prod-gohello gitlab -n go-hello-prod
