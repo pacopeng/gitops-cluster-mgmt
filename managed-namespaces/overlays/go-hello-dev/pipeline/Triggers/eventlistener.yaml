@@ -16,21 +16,19 @@ spec:
         ref: gohello-trigger-template
       interceptors:
         - params:
-            - name: filter
-              value: ''
             - name: overlays
               value:
-                - expression: body.after.truncate(7)
+                - expression: "body.after.truncate(7)"
                   key: extensions.truncated_sha
-                - expression: 'body.ref.split(''/'')[2]'
+                - expression: "body.ref.split(''/'')[2]"
                   key: extensions.branchname
-            - name: secretRef
-              value:
-                secretName: "gitlab-secret"
-                secretKey: "secretToken"
-            - name: eventTypes
-              value:
-                - "Push Hook"
+            #- name: secretRef
+            #  value:
+            #    secretName: "gitlab-secret"
+            #    secretKey: "secretToken"
+            #- name: eventTypes
+            #  value:
+            #    - "Push Hook"
           ref:
             kind: ClusterInterceptor
             name: cel
