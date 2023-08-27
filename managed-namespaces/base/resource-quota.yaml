@@ -9,7 +9,7 @@ metadata:
 spec:
   # Default to half a CPU core and half a GB of memory
   hard:
-    cpu: "500m"
-    memory: 512Mi
+    cpu: "2000m"
+    memory: 4096Mi
   scopes:
   - NotTerminating
