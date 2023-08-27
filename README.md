@@ -32,3 +32,17 @@ https://developer.ibm.com/articles/gitops-process-reference-implementation/
 
 
 https://cloud.redhat.com/blog/helm-based-applications-on-red-hat-advanced-cluster-manager-and-openshift-gitops
+
+
+
+
+oc secrets link --for=pull default quay -n go-hello-dev
+oc secrets link --for=pull builder quay -n go-hello-dev
+oc secrets link --for=pull pipeline quay -n go-hello-dev
+oc secrets link --for=pull go-hello-helm-app-dev-gohello quay -n go-hello-dev
+
+
+oc secrets link --for=pull default quay -n go-hello-prod
+oc secrets link --for=pull builder quay -n go-hello-prod
+oc secrets link --for=pull pipeline quay -n go-hello-prod
+oc secrets link --for=pull go-hello-helm-app-prod-gohello quay -n go-hello-prod
