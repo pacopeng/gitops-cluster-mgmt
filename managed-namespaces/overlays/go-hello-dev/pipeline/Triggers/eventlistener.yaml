@@ -15,9 +15,8 @@ spec:
       template:
         ref: gohello-trigger-template
       interceptors:
-        - params:
-            - name: overlays
-              value:
+        - cel:
+           overlays:
                 - expression: "body.after.truncate(7)"
                   key: truncated_sha
                 - expression: "body.ref.split('/')[2]"
@@ -29,9 +28,9 @@ spec:
             #- name: eventTypes
             #  value:
             #    - "Push Hook"
-          ref:
-            kind: ClusterInterceptor
-            name: cel
+        #  ref:
+        #    kind: ClusterInterceptor
+        #    name: cel
         #- name: "verify-gitlab-payload"
         #  ref: 
         #    name: "gitlab"
