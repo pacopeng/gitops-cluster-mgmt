@@ -4,7 +4,9 @@ kind: Kustomization
 namespace: go-hello-dev
 bases:
 - ../../base
-- ./pipeline
+
+resources:
+- ./pipeline/*
 
 # Patches are edits to make to a set of one or more targets
 patches:
