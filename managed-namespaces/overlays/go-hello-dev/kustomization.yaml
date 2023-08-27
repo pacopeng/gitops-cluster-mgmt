@@ -10,7 +10,8 @@ resources:
 - ./pipeline/Tasks/rhacs-image-check.yaml
 - ./pipeline/Tasks/rhacs-image-scan.yaml
 - ./pipeline/Triggers/eventlistener.yaml
-- ./pipeline/Triggers/gitlab-trigger.yaml
+- ./pipeline/Triggers/eventlistener-router.yaml
+#- ./pipeline/Triggers/gitlab-trigger.yaml
 - ./pipeline/Triggers/gitlab-triggerbinding.yaml
 - ./pipeline/Triggers/gohello-trigger-template.yaml
 - ./pipeline/gitlab-webhook-token.yaml
