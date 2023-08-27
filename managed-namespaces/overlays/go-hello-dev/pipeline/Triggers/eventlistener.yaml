@@ -20,7 +20,7 @@ spec:
               value:
                 - expression: "body.after.truncate(7)"
                   key: extensions.truncated_sha
-                - expression: "body.ref.split(''/'')[2]"
+                - expression: "body.ref.split('/')[2]"
                   key: extensions.branchname
             #- name: secretRef
             #  value:
