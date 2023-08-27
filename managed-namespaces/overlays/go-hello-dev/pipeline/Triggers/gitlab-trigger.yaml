@@ -1,7 +1,7 @@
 apiVersion: triggers.tekton.dev/v1beta1
 kind: Trigger
 metadata:
-  name: trigger-petclinc-gitlab
+  name: trigger-gohello-gitlab
   annotations:
       argocd.argoproj.io/sync-wave: "1"
 spec:
