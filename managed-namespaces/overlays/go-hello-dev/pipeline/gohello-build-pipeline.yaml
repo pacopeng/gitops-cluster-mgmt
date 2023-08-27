@@ -22,7 +22,7 @@ spec:
     - default: 1.17.12-2-ubi7
       name: VERSION
       type: string
-    - default: 'http://192.168.88.1:7010/root/hello.git'
+    - default: 'http://192.168.88.1:7010/root/gohello-config.git'
       name: GIT_CONFIG_REPO
       type: string
     - default: v1.0.1

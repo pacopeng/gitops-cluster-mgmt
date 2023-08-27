@@ -8,14 +8,14 @@ spec:
       elements:
       - environment: dev
         cluster: 'https://kubernetes.default.svc'
-        repoURL: 'http://192.168.88.1:7010/root/hello.git'
+        repoURL: 'http://192.168.88.1:7010/root/gohello-config.git'
         branch: 'main'
         valuesFile: 'values-dev.yaml'
         targetNamespace: 'go-hello-dev'
       - environment: prod
         cluster: 'https://kubernetes.default.svc'
-        repoURL: 'http://192.168.88.1:7010/root/hello.git'
-        branch: 'main'
+        repoURL: 'http://192.168.88.1:7010/root/gohello-config.git'
+        branch: 'prod'
         valuesFile: 'values-prod.yaml'
         targetNamespace: 'go-hello-prod'
   template:
