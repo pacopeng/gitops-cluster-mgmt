@@ -15,17 +15,15 @@ spec:
       template:
         ref: gohello-trigger-template
       interceptors:
-        - cel:
-             overlays:
-             - key: short_sha
-               expression: "body.after.truncate(7)"
-             - key: branch_name
-               expression: "body.ref.split('/')[2]"
-        - name: "verify-gitlab-payload"
-          ref: 
-            name: "gitlab"
-            kind: "ClusterInterceptor"
-          params:
+        - params:
+            - name: filter
+              value: ''
+            - name: overlays
+              value:
+                - expression: body.after.truncate(7)
+                  key: short_sha
+                - expression: 'body.ref.split(''/'')[2]'
+                  key: branch_name
             - name: secretRef
               value:
                 secretName: "gitlab-secret"
@@ -33,3 +31,18 @@ spec:
             - name: eventTypes
               value:
                 - "Push Hook"
+          ref:
+            kind: ClusterInterceptor
+            name: cel
+        #- name: "verify-gitlab-payload"
+        #  ref: 
+        #    name: "gitlab"
+        #    kind: "ClusterInterceptor"
+        #  params:
+        #    - name: secretRef
+        #      value:
+        #        secretName: "gitlab-secret"
+        #        secretKey: "secretToken"
+        #    - name: eventTypes
+        #      value:
+        #        - "Push Hook"
