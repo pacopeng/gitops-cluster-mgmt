@@ -6,9 +6,15 @@ bases:
 - ../../base
 
 resources:
-- ./pipeline/Tasks/*.yaml
-- ./pipeline/Triggers/*.yaml
-- ./pipeline/*.yaml
+- ./pipeline/Tasks/git-update-deployment.yaml
+- ./pipeline/Tasks/rhacs-image-check.yaml
+- ./pipeline/Tasks/rhacs-image-scan.yaml
+- ./pipeline/Triggers/eventlistener.yaml
+- ./pipeline/Triggers/gitlab-trigger.yaml
+- ./pipeline/Triggers/gitlab-triggerbinding.yaml
+- ./pipeline/Triggers/gohello-trigger-template.yaml
+- ./pipeline/gitlab-webhook-token.yaml
+- ./pipeline/gohello-build-pipeline.yaml
 
 # Patches are edits to make to a set of one or more targets
 patches:
