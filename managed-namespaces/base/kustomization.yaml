@@ -8,4 +8,5 @@ resources:
 - registry-secret.yaml
 - cpu-limit-range.yaml
 - mem-limit-range.yaml
+- ephemeral-storage-range.yaml
 #- secret-link.yaml
