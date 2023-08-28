@@ -88,6 +88,9 @@ spec:
       taskRef:
         kind: Task
         name: rhacs-image-check
+      workspaces:
+        - name: source
+          workspace: workspace
     - name: git-update-deployment
       params:
         - name: GIT_REPOSITORY
