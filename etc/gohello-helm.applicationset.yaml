@@ -10,13 +10,13 @@ spec:
         cluster: 'https://kubernetes.default.svc'
         repoURL: 'http://192.168.88.1:7010/root/gohello-config.git'
         branch: 'main'
-        valuesFile: 'values.yaml'
+        valuesFile: 'values-dev.yaml'
         targetNamespace: 'go-hello-dev'
       - environment: prod
         cluster: 'https://kubernetes.default.svc'
         repoURL: 'http://192.168.88.1:7010/root/gohello-config.git'
         branch: 'prod'
-        valuesFile: 'values.yaml'
+        valuesFile: 'values-prod.yaml'
         targetNamespace: 'go-hello-prod'
   template:
     metadata:
