@@ -28,7 +28,7 @@ spec:
     - default: v1.0.1
       name: APP_IMAGE_TAG
       type: string
-    - default: k8s/helms/gohello/values.yaml
+    - default: k8s/helms/gohello/values-dev.yaml
       name: KUSTOMIZATION_PATH
       type: string
   tasks:

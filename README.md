@@ -50,14 +50,11 @@ oc secret  link deployer gitlab -n go-hello-dev
 oc secrets link  go-hello-helm-app-dev-gohello gitlab -n go-hello-dev
 
 
-
-
 oc secrets link --for=pull,mount default quay -n go-hello-prod
 oc secrets link --for=pull,mount builder quay -n go-hello-prod
 oc secrets link --for=pull,mount pipeline quay -n go-hello-prod
 oc secrets link --for=pull,mount deployer quay -n go-hello-prod
 oc secrets link --for=pull,mount go-hello-helm-app-prod-gohello quay -n go-hello-prod
-
 
 
 oc secrets link default gitlab -n go-hello-prod
