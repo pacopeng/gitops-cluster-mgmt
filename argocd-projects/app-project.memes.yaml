@@ -15,10 +15,10 @@ spec:
   #     kind: '*'
   description: Project Go Hello Helm
   destinations:
-    - name: in-cluster
+    - name: dev-cluster
       namespace: go-hello-dev
       server: 'https://kubernetes.default.svc'
-    - name: in-cluster
+    - name: prod-cluster
       namespace: go-hello-prod
       server: 'https://kubernetes.default.svc'
   roles:
