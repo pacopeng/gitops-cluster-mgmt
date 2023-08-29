@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: go-hello-helm-app-prod
+spec:
+  destination:
+    namespace: 'go-hello-prod'
+    server: 'https://kubernetes.default.svc'
+  source:
+        path: k8s/helms/gohello
+        repoURL: 'http://192.168.88.1:7010/root/gohello-config.git'
+        targetRevision: 'prod'
+        helm:
+          valueFiles:
+            - 'values-prod.yaml'
+          values: |
+            targetNamespace: 'go-hello-prod'
+  project: project-gohello
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

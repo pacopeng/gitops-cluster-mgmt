@@ -13,6 +13,7 @@ spec:
   # clusterResourceWhitelist:
   #   - group: '*'
   #     kind: '*'
+
   description: Project Go Hello Helm
   destinations:
     - name: dev-cluster
@@ -53,7 +54,7 @@ spec:
         # Rules for the production environment/application
         - >-
           p, proj:project-gohello:gohello-development, applications, get,
-          project-gohello/go-hello-helm-app-dev, allow
+          project-gohello/go-hello-helm-app-dev, deny
         - >-
           p, proj:project-gohello:gohello-development, applications, create,
           project-gohello/go-hello-helm-app-prod, deny
