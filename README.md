@@ -10,6 +10,8 @@ oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:opens
 oc get cm argocd-rbac-cm -o yaml -n openshift-gitops
 
 
+oc get secret openshift-gitops-cluster -o json -n openshift-gitops | jq '.data["admin.password"]' -r | base64 --decode
+
 export ARGO_PASSWORD=$(oc get secret openshift-gitops-cluster -o json -n openshift-gitops | jq '.data["admin.password"]' -r | base64 --decode)
 
 argocd login openshift-gitops-server-openshift-gitops.apps.test.lab.local \
